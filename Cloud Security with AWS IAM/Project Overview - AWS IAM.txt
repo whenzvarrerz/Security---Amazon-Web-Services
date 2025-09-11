@@ -1,0 +1,16 @@
+Using a service called AWS Identity Access Management, IAM.
+It's like a gatekeeper that decides who can sign in and what
+they're allowed to do in your AWS account.
+
+We'll start a virtual computer called EC2 (Elastic Compute Cloud) Instance,
+Then, we'll make some rules, called IAM policies, and put people
+into groups to decide who can use this computer and what they can do with it. 
+
+Tech Stack:
+-AWS EC2 (Compute)
+-AWS IAM (Security)
+-AWS IAM Roles (Security, Management) 
+-AWS IAM Policies (Security, Management)
+-AWS IAM Users and User Groups (Security, Management)
+-AWS Account Alias (Security, Management)
+
