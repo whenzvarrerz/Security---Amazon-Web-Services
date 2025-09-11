@@ -6,8 +6,8 @@ graph TD
             EC2_Prod[EC2 Instance<br>Production]
         end
         subgraph IAM
-            UserGroup[User Group<br>DevOpsGroup]
-            IAMUser[IAM User<br>DevOpsUser]
+            UserGroup[User Group<br>IAM User Group]
+            IAMUser[IAM User<br>]
             IAMPolicy[Policy<br>EC2AccessPolicy]
             UserGroup -->|Contains| IAMUser
             UserGroup -->|Attached| IAMPolicy
@@ -18,3 +18,4 @@ graph TD
     classDef aws fill:#FF9900,stroke:#333,stroke-width:2px;
     class EC2_Dev,EC2_Prod,IAMPolicy aws;
 ```
+
