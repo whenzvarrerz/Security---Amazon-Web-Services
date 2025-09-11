@@ -1,0 +1,22 @@
+```mermaid
+graph TD
+    subgraph AWS_Cloud
+        subgraph VPC
+            subgraph Public_Subnet_Dev
+                EC2_Dev[EC2 Instance<br>Development]
+            end
+            subgraph Public_Subnet_Prod
+                EC2_Prod[EC2 Instance<br>Production]
+            end
+        end
+        subgraph IAM
+            UserGroup[User Group<br>DevOpsGroup]
+            IAMUser[IAM User<br>DevOpsUser]
+            IAMPolicy[Policy<br>EC2AccessPolicy]
+            UserGroup -->|Contains| IAMUser
+            UserGroup -->|Attached| IAMPolicy
+        end
+        IAMPolicy -->|Controls Access| EC2_Dev
+        IAMPolicy -->|Controls Access| EC2_Prod
+    end
+```
