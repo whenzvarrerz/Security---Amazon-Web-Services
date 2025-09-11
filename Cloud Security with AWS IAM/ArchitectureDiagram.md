@@ -2,12 +2,8 @@
 graph TD
     subgraph AWS_Cloud
         subgraph VPC
-            subgraph Public_Subnet_Dev
-                EC2_Dev[EC2 Instance<br>Development]
-            end
-            subgraph Public_Subnet_Prod
-                EC2_Prod[EC2 Instance<br>Production]
-            end
+            EC2_Dev[EC2 Instance<br>Development]
+            EC2_Prod[EC2 Instance<br>Production]
         end
         subgraph IAM
             UserGroup[User Group<br>DevOpsGroup]
@@ -19,4 +15,6 @@ graph TD
         IAMPolicy -->|Controls Access| EC2_Dev
         IAMPolicy -->|Controls Access| EC2_Prod
     end
+    classDef aws fill:#FF9900,stroke:#333,stroke-width:2px;
+    class EC2_Dev,EC2_Prod,IAMPolicy aws;
 ```
