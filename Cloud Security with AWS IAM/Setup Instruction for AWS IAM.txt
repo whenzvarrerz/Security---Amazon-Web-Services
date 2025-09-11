@@ -1,0 +1,29 @@
+A. Launch two EC2 Instances *Computing Image
+	1. Production
+	2. Development
+
+B. Create an IAM Policy *Policy rule granting access to Development EC2 Instance
+	1. IAM Console *Identity and Access Management
+	2. Create Policy
+	3. Policy editor tab, JSON. Edit JSON Policy.
+	4. Create AWS Account Alias. Simplify user login.
+	5. Create IAM Users and User Groups. 
+		-Groups to centrally manage permissions. 
+		-Users for login access.
+		-Take note of sign-in details.
+ 
+C. Test user login access.	
+	1. Log in using sign-in details in Incognito mode. 
+		-Some dashboard panels are showing Access Denied.
+	
+D. Head to the created EC2 Instances and select PRODUCTION. 
+	1. Stop Instance.   
+		- You are unauthorized to stop the PRODUCTION instance.
+
+E. Head to the created EC2 Instances and select DEVELOPMENT
+	1. Stop Instance.
+		- Development Instance - Stop Success!
+
+Elastic - flexible.
+Compute - virtual computer with computing power
+Cloud - available over the Internet.
