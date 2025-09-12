@@ -126,9 +126,6 @@ I was able to stop the development instance. This was because the policy allows 
 
 ---
 
-## The IAM Policy Simulator
-
-### How I used the simulator
 
 ---
 
