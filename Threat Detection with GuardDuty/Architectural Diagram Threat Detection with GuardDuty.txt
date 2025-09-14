@@ -1,0 +1,13 @@
+graph LR
+    A[CloudFormation Template] --> B[Vulnerable Web App]
+    B --> C[SQL Injection]
+    C --> D[Arbitrary Code Execution]
+    D --> E[Steal Data]
+    E --> F[GuardDuty Threat Detection]
+
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#fff3e0
+    style D fill:#fff3e0
+    style E fill:#ffebee
+    style F fill:#e8f5e8
