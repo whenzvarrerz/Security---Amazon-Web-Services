@@ -14,7 +14,7 @@ graph TD
         E
     
 
-graph TD
+
     A[KMS] -->|Provides Key| B[KMS Encryption Key]
     B -->|Encrypts| C[DynamoDB]
     D[IAM Admin User] -->|Access ✅| B
@@ -29,4 +29,5 @@ graph TD
         D
         E
     end 
+
 
