@@ -2,7 +2,7 @@ graph TD
     A[KMS] -->|Provides Key| B[KMS Encryption Key]
     B -->|Encrypts| C[DynamoDB]
     D[IAM Admin User] -->|Access ✅| B
-    E[Test User] -->|Access ✅| B
+    E[Test User] -->|Access ❌| B
 
     subgraph AWS Services
         A
@@ -13,6 +13,7 @@ graph TD
         D
         E
     end 
+
 
 
 
