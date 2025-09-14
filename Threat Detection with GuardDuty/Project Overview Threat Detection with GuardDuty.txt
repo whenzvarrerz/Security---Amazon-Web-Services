@@ -29,6 +29,13 @@ AWS Cloud Formation (Code Automation, Security, Resource Management)
 AWS CloudShell (Scripting, Console Management)
 OWASP Juice Shop (Observation, Simulation, Security, Management)
 
+Download EICAR test file. 
+- https://www.eicar.org/download-anti-malware-testfile/
+- Save link as EICAR-test-file.txt
+- EICAR test file is a harmless file that is programmed to make antivirus software think it's a malware.
+- European Institute for Computer Antivirus Research
+
+
 ==========================================================================================================
 AWS GuardDuty
 Like a security guard patrolling your house, it watches for suspicious activity and alerts you 
@@ -45,6 +52,7 @@ manage your AWS resources.
 AWS S3
 Like a big, secure storage locker, it keeps your files safe and accessible whenever you need them. 
 ===========================================================================================================
+
 
 
 
