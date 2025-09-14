@@ -4,6 +4,8 @@ In this project, I will deploy a vulnerable web application, steal credentials, 
 data with those credentials, detect and analyze attack with GuardDuty, and implement malware 
 protection to secure data. 
 
+COMPROMISE IS FOR EDUCATION PURPOSE ONLY!
+
 Amazon GuardDuty - intelligent threat detection service from AWS.
 
 Amazon CloudFront - global content delivery network for data with low latency and 
@@ -41,5 +43,6 @@ manage your AWS resources.
 AWS S3
 Like a big, secure storage locker, it keeps your files safe and accessible whenever you need them. 
 ===========================================================================================================
+
 
 
