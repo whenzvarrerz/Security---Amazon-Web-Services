@@ -16,6 +16,7 @@ Amazon S3 - Simple Storage Service - object storage service that is highly scala
 
 Amazon CloudFormation - uses text-based templates (JSON or YAML) to define provision 
 		     infrastructure as a code. 
+AWS CloudShell - command line interface for console management.
 
 OWASP Juice Shop - deliberately insecure web application
 
@@ -25,6 +26,7 @@ Amazon GuardDuty (Detection, Security, Management)
 Amazon CloudFront (Content Delivery Network, Management)
 Amazon S3 (Object Storage, Security, Management)
 AWS Cloud Formation (Code Automation, Security, Resource Management)
+AWS CloudShell (Scripting, Console Management)
 OWASP Juice Shop (Observation, Simulation, Security, Management)
 
 ==========================================================================================================
@@ -43,6 +45,7 @@ manage your AWS resources.
 AWS S3
 Like a big, secure storage locker, it keeps your files safe and accessible whenever you need them. 
 ===========================================================================================================
+
 
 
 
