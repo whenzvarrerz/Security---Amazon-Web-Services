@@ -39,8 +39,7 @@ C. Exploit the web app.
 	 	- Admin's profile page.	
 		- Command injection.
 	 3. You will be redirected to page that the code created, stolen credential.
-	 
-
+	
 D. Steal Data with Stolen Credentials.
 	 Open AWS CloudShell.	
 	 Configure AWL CLI with stolen credentials.
@@ -61,14 +60,13 @@ D. Steal Data with Stolen Credentials.
 		cat credentials.json | jq
 
 		- Configure AWS CLI Profile.
-		aws configure set profile.stolen.region us-west-2
+aws configure set profile.stolen.region us-west-2
 aws configure set profile.stolen.aws_access_key_id `cat credentials.json | jq -r '.AccessKeyId'`
 aws configure set profile.stolen.aws_secret_access_key `cat credentials.json | jq -r '.SecretAccessKey'`
 aws configure set profile.stolen.aws_session_token `cat credentials.json | jq -r '.Token'`
  
 		- Copy the Secret File
 		aws s3 cp s3://$JUICESHOPS3BUCKET/secret-information.txt . --profile stolen
-
  		
 		-View Secret File
 		cat secret-information.txt
@@ -91,14 +89,13 @@ F. Use S3 Malware Protection.
 	5. Set Default or Tag scanned objects and Service Access. 
 	6. Select Enable.
 		- Malware Protection for S3 is now enabled.
-
 	
 	Upload test malware file to S3 bucket.
         1. Select S3 bucket from Protected buckets panel.
 	2. Select you S3 bucket.
 	3. Download EICAR test file. Save link as EICAR-test-file.txt
-		-EICAR test file is a harmless file that is programmed to make antivirus software 		think it's a malware.
-		-European Institute for Computer Antivirus Research
+		- EICAR test file is a harmless file that is programmed to make antivirus software think it's a 			  malware.
+		- European Institute for Computer Antivirus Research
 		- https://www.eicar.org/download-anti-malware-testfile/
 
 	4. Upload the EICAR test file.
@@ -109,8 +106,4 @@ F. Use S3 Malware Protection.
 		- GaurdDuty caught the malicious file!
 
 
-	
 
-
-
-	Get to know the resource that make up your web app.
