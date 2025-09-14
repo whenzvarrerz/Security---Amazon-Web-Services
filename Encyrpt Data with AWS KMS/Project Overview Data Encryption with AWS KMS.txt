@@ -2,18 +2,21 @@ Data Encryption with AWS KMS
 AWS KMS - Key Management Service
 Protect your data from unauthorized access and ensure the right people can see and use it.
 
-AWS KMS is like a magical lockbox for your secrets. Only those with the special key can open it, and the KMS makes and guards those keys to keep your stuff safe. 
+AWS KMS is like a magical lockbox for your secrets. Only those with the special key can open it, 
+and the KMS makes and guards those keys to keep your stuff safe. 
 
 Encryption protects data by converting it into a secure, unreadable format that only authorized users with 
-specific encryption keys can decrypt and access. You use AWS KMS to create and manage these keys. This project
-involves encrypting a DynamoDB with KMS key, adding and retrieving data to test the encryption, observing how 
-AWS prevents unauthorized access, and granting specific users access to the encrypted data. 
+specific encryption keys can decrypt and access. You use AWS KMS to create and manage these keys. 
+
+This project involves encrypting a DynamoDB with KMS key, adding and retrieving data to test the encryption, observing how AWS prevents unauthorized access, and granting specific users access to the encrypted data. 
+
 This ensures data security while allowing the right people to use it. 
 
 Tech Stack / Resources:
 -AWS KMS (Encryption, Security, Management)
 -AWS DynamoDB (Database, Management)
 -AWS IAM user (Access, Security, Management)
+
 
 
 
