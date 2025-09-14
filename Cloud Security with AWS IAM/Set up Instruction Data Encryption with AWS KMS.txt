@@ -1,0 +1,99 @@
+A. Create and manage encryption keys in KMS.
+	1. Log in to AWS Management Console as IAM Admin user.
+	2. Search: Key Management Service.
+	3. Create a key.
+		- Select Customer managed keys, left navigation pane.
+		- Keep Symmetric for the key type. 
+		- Keep Encrypt and decrypt for the key usage. 
+		- Give your key an alias to easily identify your key.
+		- Add alias description. 	
+		- Select administrator as your own IAM Admin User. 
+		- Select key user as your own IAM Admin User. 
+		- Observe the Key Policy. 
+		- Select Finish. 
+
+
+
+B. Create and Encrypt a DynamoDB table using an encryption key.
+	
+	CREATE Table
+	1. Search, select DynamoDB in the AWS Management Console.
+	2. Create table, add table name. 
+	3. Define a partition key. Ex. id.
+	4. Table settings: Default settings.
+	5. Create table. Table status will change to Active. 
+	
+	ENCRYPT Table.
+	1. Select your table. 
+	2. Select Additional settings. 
+	3. Scroll down to Encryption, select Manage encryption.
+	4. Choose Stored in your account, and owned and managed by you.  
+	5. Select the KMS key you created in the previous step. 
+	6. Save changes.
+	7. Go to Additional Settings tab, you will see an updated Encryption panel.
+
+
+C. Add data to the encrypted table.
+	
+	Add Data 
+	1. In your table's setting page, select Actions.
+	2. Select Create item.
+	3. Add a simple item. On the id - Attribute, enter 1.
+	4. Select Create item. 
+ 	5. Select Explore items, left-hand side bar.
+	6. Refresh tab. You can see the new item.
+
+
+D. Create / Use a test user to validate your encryption.
+	
+	Create a test user using IAM
+	1. Open IAM console.
+	2. Select Users. Select Create user. Enter username.
+	3. Check Provide user access to the AWS Management Console.
+		- Let us log in as test user and see the KMS key's effect later.
+	4. Uncheck Users must create a new password at next sign-in.	
+		- To save time when logging in as test user.
+	5. Next.
+	6. Select Attach existing policies directly.
+	7. Add AmazonDynamoDBFullAccess as permission policy.
+	8. Create user.
+	9. Select Download.csv file as backup user's login.
+
+
+E. Test when test user who doesn't have a KMS key permissions, tries to access the 
+   encrypted DynamoDB table.
+	Log into AWS as test user.
+	1. Copy the Console sign-in URL.
+	2. Open a new incognito window in your browser, paste the sign-in URL.
+	
+	View items in the encrypted DynamoDB table.
+ 	1. Go to the DynamoDB console.
+	2. Explore items tab.
+	3. Select the table.
+		- Access is Denied!
+	
+F. Give your test user encryption access. 
+	Modify your KMS key's policy as the administrator.
+	1. On your IAM Admin User logged in in, navigate to KMS console.
+	2. Select Customer-managed keys, left-hand side bar.
+	3. Select the key.
+	4. Down on the Key policy tab, select Add next to Key users.
+	5. Add the key for the test user.
+	6. Look at your key policy, policy view, test user is added. 
+	
+	
+G. Verify the test user can decrypt data with the key.
+	Test user with a KMS key permissions, tries to access the encrypted DynamoDB table.
+	Log into AWS as test user.
+	1. Copy the Console sign-in URL.
+	2. Open a new incognito window in your browser, paste the sign-in URL.
+	
+	View items in the encrypted DynamoDB table.
+ 	1. Go to the DynamoDB console.
+	2. Explore items tab.
+	3. Select the table.
+		- Access allowed!
+
+
+	
+	
