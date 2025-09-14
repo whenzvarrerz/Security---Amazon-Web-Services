@@ -25,7 +25,7 @@ Amazon S3 (Object Storage, Security, Management)
 AWS Cloud Formation (Code Automation, Security, Resource Management)
 OWASP Juice Shop (Observation, Simulation, Security, Management)
 
-=====
+==========================================================================================================
 AWS GuardDuty
 Like a security guard patrolling your house, it watches for suspicious activity and alerts you 
 to potential threat.
@@ -40,5 +40,6 @@ manage your AWS resources.
 
 AWS S3
 Like a big, secure storage locker, it keeps your files safe and accessible whenever you need them. 
+===========================================================================================================
 
 
