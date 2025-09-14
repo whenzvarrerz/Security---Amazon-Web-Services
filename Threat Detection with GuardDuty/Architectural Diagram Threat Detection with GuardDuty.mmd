@@ -1,6 +1,13 @@
 graph LR
-    A[CloudFormation template] -->|Deploys| B[Web App]
-    B -->|Vulnerable to| C[SQL Injection Execution]
-    C -->|Leads to| D[Arbitrary Code Execution]
-    D -->|Results in| E[Steal data]
-    E -->|Detected by| F[GuardDuty]
+    A[CloudFormation Template] --> B[Vulnerable Web App]
+    B --> C[SQL Injection]
+    C --> D[Arbitrary Code Execution]
+    D --> E[Steal Data]
+    E --> F[GuardDuty Threat Detection]
+
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#fff3e0
+    style D fill:#fff3e0
+    style E fill:#ffebee
+    style F fill:#e8f5e8
