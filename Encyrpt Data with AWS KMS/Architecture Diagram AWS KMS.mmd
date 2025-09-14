@@ -1,15 +1,15 @@
 graph TD
-    A[IAM Admin User] -->|Access| B[AWS KMS Key]
-    C[IAM Test User] -->|Access| B
-    B -->|Encrypts/Decrypts| D[DynamoDB Table]
-    D -->|Stores Data| E[Encrypted Data]
+    A[KMS] -->|Provides Key| B[KMS Encryption Key]
+    B -->|Encrypts| C[DynamoDB]
+    D[IAM Admin User] -->|Access ✅| B
+    E[Test User] -->|Access ❌| B
 
-    subgraph AWS Account
-        B
-        D
+    subgraph AWS Services
+        A
+        C
     end
 
     subgraph IAM
-        A
-        C
+        D
+        E
     end
