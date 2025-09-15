@@ -6,7 +6,13 @@ graph LR
     E --> F[Step #6]
     C --> G[S3 Bucket]
 
-    A -->|Data Flow| G
+    A -->|Data Flow| G 
+
+%% Step #1 and Step #2 represent the intial stages.
+%% CloudWatch is the central component that processes data.
+%% Step #4, Step #5, and Step #6 follow the CloudWatch processing.
+%% S3 Bucket is connected to both Step #1 and CloudWatch, indicating data storage.
+
 
 
 
