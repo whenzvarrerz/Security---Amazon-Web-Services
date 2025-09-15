@@ -1,0 +1,35 @@
+AWS CloudWatch
+- Monitoring and observability service that collects and tracks metrics, logs, and events from your AWS resources and applications to provide a unified view of operational health and performance.
+
+AWS CloudTrail
+- A service that provides an event log of user activity and API usage within your AWS account, enabling auditing, security monitoring, governance, and compliance.
+
+Amazon SNS Simple Notification Service
+- Fully managed messaging service provided by Amazon Web Services. It operates on a "publish-subscribe" (pub-sub) model, enabling applications, end-users, and devices to send and receive notifications from the cloud. 
+
+
+In this project, we will be setting it up in two stages. First, set up secret and logging. Second, set up monitoring and alert system. We will configure AWS CloudTrail to monitor secret access events, record access attempts and enable notifications, set up SNS alerts to receive notifications when secrets are accessed, and develop a second notification system to evaluate which method provides more effective security alerts. 
+
+
+Tech Stack / Resources:
+CloudWatch (Monitoring, Management)
+CloudTrail (Monitoring, Auditing, Compliance, Security)
+AWS Secrets Manager (Security, Management)
+Amazon SNS (Security, Alerts, Notifications)
+Amazon S3 (Object Storage, Management, Security)
+
+
+
+===============================================================================
+
+Imagine AWS CloudWatch as a diligent security guard protecting your computer programs on AWS. Just like a security guard patrols the area, keeps an eye out for anything suspicious, and sounds an alarm if there's trouble, CloudWatch watches over your apps, detects any issues, and sends you an alert to keep everything secure. 
+
+===============================================================================
+
+Think of AWS CloudTrail as a detective's notebook for your computer programs on AWS. Just like a detective writes down every step and action that happens during a case, CloudTrail keeps a record of everything your apps do, like who used them and what changes were made, so you can look back and figure out what happened.
+
+===============================================================================
+
+Think of Amazon SNS as a speedy messenger service for your computer programs on AWS. Just like a messenger delivers important notes to the right people quickly, SNS sends alerts or messages to your phone, email or other apps when something important happens, like a problem that needs your attention. 
+
+===============================================================================
