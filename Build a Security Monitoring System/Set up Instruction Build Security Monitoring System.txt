@@ -4,7 +4,7 @@ A. Create a Secret
 		  > Select type: Other type of secret
 		  > Encryption key: aws/secretsmanager
 		  > Secret name:
-		  > Description: Secret created for Building a Monitoring System		  > Secret Replication: Disabled
+		  > Description: Secret created for Building a Monitoring System > Secret Replication: Disabled
 		  > Automatic Rotation: Disabled
 		  > Store
 		  > View Details	
@@ -179,15 +179,19 @@ M. Verify your Alarm.
 	   	- It should be In alarm state.
 		- You will receive a notification.
 
-===============================================================================
+=============================================================================================================================================
 
 Project Completed!
 
-To keep sensitive information like passwords safe, use AWS Secrets Manager to securely store and manage them. Enable AWS CloudTrail logging to track access, and check CloudTrail Event History and S3 logs for any security issues. Set up CloudWatch Metric Filters to monitor secret access events and create CloudWatch Alarms with SNS notifications for instant security alerts. This keeps your secrets protected and monitored in the cloud.
+To keep sensitive information like passwords safe, use AWS Secrets Manager to securely store and manage them. 
+Enable AWS CloudTrail logging to track access, and check CloudTrail Event History and S3 logs for any security issues. 
+Set up CloudWatch Metric Filters to monitor secret access events and create CloudWatch Alarms with SNS notifications 
+for instant security alerts. This keeps your secrets protected and monitored in the cloud.
 
-===============================================================================
+=============================================================================================================================================
 
 	
 	
 	 
 	   				
+
