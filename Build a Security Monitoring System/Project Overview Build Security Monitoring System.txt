@@ -1,11 +1,14 @@
 AWS CloudWatch
-- Monitoring and observability service that collects and tracks metrics, logs, and events from your AWS resources and applications to provide a unified view of operational health and performance.
+- Monitoring and observability service that collects and tracks metrics, logs, and events from your AWS resources 
+  and applications to provide a unified view of operational health and performance.
 
 AWS CloudTrail
-- A service that provides an event log of user activity and API usage within your AWS account, enabling auditing, security monitoring, governance, and compliance.
+- A service that provides an event log of user activity and API usage within your AWS account, enabling auditing, 
+  security monitoring, governance, and compliance.
 
 Amazon SNS Simple Notification Service
-- Fully managed messaging service provided by Amazon Web Services. It operates on a "publish-subscribe" (pub-sub) model, enabling applications, end-users, and devices to send and receive notifications from the cloud. 
+- Fully managed messaging service provided by Amazon Web Services. It operates on a "publish-subscribe" (pub-sub) model, 
+  enabling applications, end-users, and devices to send and receive notifications from the cloud. 
 
 
 In this project, we will be setting it up in two stages. First, set up secret and logging. Second, set up monitoring and alert system. 
@@ -42,3 +45,4 @@ Just like a messenger delivers important notes to the right people quickly, SNS 
 email or other apps when something important happens, like a problem that needs your attention. 
 
 ==============================================================================================================================================
+
