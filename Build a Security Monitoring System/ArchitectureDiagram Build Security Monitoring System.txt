@@ -1,0 +1,9 @@
+graph LR
+    A[Step #1] --> B[Step #2]
+    B --> C[CLOUDWATCH]
+    C --> D[Step #4]
+    D --> E[Step #5]
+    E --> F[Step #6]
+    C --> G[S3 Bucket]
+
+    A -->|Data Flow| G
