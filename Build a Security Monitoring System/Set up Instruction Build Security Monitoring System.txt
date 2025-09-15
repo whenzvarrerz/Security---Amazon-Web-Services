@@ -1,0 +1,193 @@
+A. Create a Secret
+	1. Access AWS Management Console, search Secrets Manager.
+		- Configure Secrets Manager.
+		  > Select type: Other type of secret
+		  > Encryption key: aws/secretsmanager
+		  > Secret name:
+		  > Description: Secret created for Building a Monitoring System		  > Secret Replication: Disabled
+		  > Automatic Rotation: Disabled
+		  > Store
+		  > View Details	
+		- You can now see the created TopSecretInfo
+
+B. Configure CloudTrail to record your account's activity.
+   Configure the trail to store logs in an S3 bucket.	
+	1. Access AWS Management Console, search CloudTrail.	
+		- Configure CloudTrail
+		  > Create Trail
+		  > Trail Name
+	   	  > Storage location: Create new S3 bucket.
+		  > Apply trail to my organization: Not enabled
+		  > Trail log location:
+		  > Log file SSE-KMS encryption: Not enabled
+		  > Log file validation: Enabled
+   		  > SNS notification delivery: Disabled
+
+	2. Choose log events.
+		  > API activity: All
+		  > Exclude AWS KMS events: Yes
+		  > Exclude Amazon RDS Data API events: Yes
+      		  > Create trail 
+		  - You've created a CloudTrail to monitor API calls.
+
+C. Generate Secret Access Events.
+	1. Access Secrets Manager			
+	2. TopSecretInfo
+	   > Retrieve secret value.
+	3. Access your Secret over AWS CLI
+	   > Open AWS CloudShell
+	   > Change Region
+		- aws secretsmanager get-secret-value --secret-id "TopSecretInfo" --region your-region-code
+	   	- This will give you a secret's value in JSON format.
+		- You've generated a secret access events!
+
+D. Analyze Your CloudTrail Events.
+	1. Head to CloudTrail console.
+	   > CloudTrail Dashboard
+           > Select Event History
+	   > Lookup attributes: Event source
+           > Enter: secretsmanager.amazonaws.com	
+           > Event List: GetSecretValue
+	   	- Confirmed that CloudTrail records an event when someone accesses your secret.
+
+E. Track Secrets Access using CloudWatch Metrics. 
+	Sending all of CLoudTrial's logs to CloudWatch
+	1. Analyze CloudWatch Logs
+	   > CloudTrail console > Select Trails
+	   	- You will be seeing your Trails' details.
+	   > CloudWatch Logs > Edit
+	   > Check Enabled checkbox for CloudWatch Logs.
+	   > Select Log group New > 
+  	   > Enter a Log group name 
+	   > IAM Role > Select New > Enter Role name
+	   > Save changers
+
+F. Verify CloudWatch Logs
+	1. On CloudWatch console.
+	   > Expand Logs > Select Log groups
+	   > In the Log groups page, search and select log group.
+	   	- You will see multiple log streams.
+	    	- You can expand one of the logs to see its details.
+	
+ 	2. Create Metric Filter
+	   > On your log group > Select Actions > Create metric filter
+	   > Define pattern
+	   > Filter pattern field enter: "GetSecretsValue"
+	   > Add filter name: GetSecretsValue
+	   > Metric details > Metric namespace: SecurityMetrics
+	   > Metric name enter: Secret is accessed.
+	   > Metric value enter: 1
+	   > Default value enter: 0
+	   > Unit: Blank
+	   > Create metric filter
+		- Green banner confirming metric filter created.	
+	   	- You've created a metric filter and metric to track secret access.
+
+G. Create CloudWatch Alarm and SNS Topic.
+	1. Create CloudWatch Alarm
+	   > On CloudWatch Alarm page > select Metric filters
+	   > Check GetSecretValue metric filter
+	   > Create Alarm
+
+	2. CloudWatch alarm set up.
+	   > Metric
+		- Namespace: SecurityMetrics
+	        - Metric name: Secret is accessed.
+		- Statistics: Average
+		- Period: 5 minutes
+		- Conditions: Threshold: Static
+		- Set Whenever SecretIsAccessed - Greater/Equal
+		- Set than - to 1
+		- Next
+	  
+	> Configure actions page
+		- Notification: default setting In alarm
+	        - Select a notification to the following SNS topic: Create a new topic
+		- Topic name enter: SecurityAlarms
+		- Email endpoints enter: your email address.
+	 	- Create topic
+			- SNS topic is created.
+		- Next
+		- Alarm name enter: Secret is accessed.
+		- Alarm description: This alarm goes off whenever a secret is Secrets Manager is accessed.
+		- Create alarms
+
+H. Confirm SNS Subscription
+	1. Check your email inbox for an email from AWS Notifications.
+		- Email confirmed your subscription to SNS topic created.
+		
+		> Select Confirm subscription
+		- Subscription confirmed page in your browser will show.
+		- You've set up a CloudWatch Alarm and SNS topic.
+
+I. Configure Direct CloudTrial SNS Notifications
+	1. On CloudTrial console.
+		> Select Trails > Select your trail in the list
+		> General Details section > Select Edit
+		> On SNS notification delivery section > Check Enabled to direct SNS notifications from CloudTrail.
+		> Select Use existing SNS topic > Select your existing SNS topic	
+		> Save changes.
+
+J. Access Your Secret again.
+	1. On Secrets Manager console.
+		> Go to TopSecretsInfo > Retrieve secret value
+			- This will trigger another secret access event.
+			- Now, being captured by both CloudWatch Alarm and CloudTrail notifications.
+	
+	2. Check your email for CloudTrail Notifications.
+		- CloudTrail will deliver log files to S3 and send notifications.
+	
+	3. Check your inbox.
+		- New email notification with subject related to CloudTrial.
+	
+	4. Stop emails from CloudTrail.
+		> Select Trail > Select your trail in the list.
+		> On detail page, General detail section > Select Edit
+		> On SNS notification deliver > Uncheck Enabled
+			- Disable direct SNS notification from CloudTrail.
+
+K. Test Email Notification.
+	Retrieve your secret value again to trigger alarm.
+	Troubleshoot monitoring system - you're not getting notification.
+	- Can be resolved by doing Step J.
+	
+	1. Trigger Alarm.
+	   > On Secrets Manager > TopSecretsInfo secret
+	   > Retrieve secret value
+		- Secret is exposed again.
+		- Now, you will not get an email.
+
+	2. Troubleshooting 
+	   > CloudTrail didn't record the GetSecretValue event.
+	   > CloudTrail isn't sending logs to CloudWatch.
+	   > CloudWatch's metric filter isn't filtering logs correctly.
+	   > CloudWatch's alarm isn't triggering an action.
+	   > SNS isn't delivering emails to you.
+	
+	3. Can be resolved by doing Step J.
+		- CloudTrailSNS notification set up.
+
+L. Access Your Secret Again.
+	  1. On Secrets Manager console.
+	     > TopSecretInfo
+	     > Retrieve secret value.
+		- This will trigger another secret event that will be captured by both CloudWatch Alarm and the direct CloudTrail notification.
+	
+M. Verify your Alarm.
+	1. On CloudWatch console.
+	   > Refresh Secret is accessed alarm
+	   	- It should be In alarm state.
+		- You will receive a notification.
+
+===============================================================================
+
+Project Completed!
+
+To keep sensitive information like passwords safe, use AWS Secrets Manager to securely store and manage them. Enable AWS CloudTrail logging to track access, and check CloudTrail Event History and S3 logs for any security issues. Set up CloudWatch Metric Filters to monitor secret access events and create CloudWatch Alarms with SNS notifications for instant security alerts. This keeps your secrets protected and monitored in the cloud.
+
+===============================================================================
+
+	
+	
+	 
+	   				
